@@ -1,0 +1,108 @@
+1. In create_spatial_tuning_function: where does num_neurons, num_colors get defined?
+
+2. In trial_info as a part of parameters, how should I define the various parts of the trial - in update_parameters.
+
+3. Define parameters
+fix_time
+num_flashes
+cycle_time-how long each flash is
+num_colors
+num_batches
+
+4. How do I define:
+eodead
+eof
+eos
+emt
+eft
+ert
+
+5. How do i decide:
+num_spatial_tuned
+num_color_tuned
+
+6. Where do self.variables come from? where are they defined?
+
+7. num_batches, trials_per_batch vs. num_trials in new
+no more num_batches
+
+8. Structure of generate_taskname_trial
+a. End of trial epochs?
+b. trial_length?
+c. end of neuron indices?
+d. duration of mask
+e. trial_info
+- output, train_mask, sample, test, neural_input
+f. Set mask
+g. for t in range(self.num_trials)
+- generate trial params (x_pos, y_pos, color, zone)
+-set mask to reflect beginning of decision time
+- 
+
+9. What does n%self.num_colors == c:
+
+10. Should I make a separate tuning function file for delayed match to sample spatial location task?
+
+11. still confused about timing within a trial wrt eodead, eof eos
+
+12. Why does mask_duration have //?
+
+13. defined trial_length in parameters - update dependencies
+
+should I define it in parameters or locally within the function? (like in generate_dualDMS_trial
+
+14. Check if flash_x_pos is correctly defined in generate_spatial_cat_trial. Do I have to do something about dtype?
+
+15. why is n_output default set to 3? should i change it for the spatial stuff?
+
+16. when we set desired output to 1 for all times? - why is the first dimension equal to 0 - shouldnt it be the second dimension?
+
+17. I don't think we need rep_num=0
+
+18. Is there a reason that the get_category_zone has limits on zones that are asymmetric? 5/7 as opposes 4/2? Harder for the network?
+
+19. What is neural_multiplier doing?
+
+20. What is cycle_time_ind?
+
+21. What is dead time exactly for? Why is mask time set to zero during then?
+
+22. check if desired output is correct
+
+TO DO
+
+23. First thing to do is to add white flashes, and it's a non-target. 
+
+Not sure about how to add tuning for the white flash.
+
+TO CHECK - 5 December, 2017
+
+1. Why are trial numbers in each batch different?
+
+2. Rule neurons are 0 during deadtime. 
+
+TO CHECK - 18 December, 2017
+
+1. So, with saved results, I will separately run analysis.py? in anaconda prompt?
+
+2. You should also consider saving weights, model performance, parameters, and trial_time.
+
+3. May be just use the original analyze_model code
+
+TO CHECK - 19 December, 2017
+
+1. Line 277 - model.py - What does stack do? - I THINK I KNOW
+
+2. whatever is stored in state_hist or h or hidden units - for the last iteration that happened - correct?
+
+3. So, if I am training two tasks, I need to make sure to save both? Which task is saved at the moment?
+
+TO ADD - 20 January, 2017
+
+1. In model.py, add a line to save trial_info about both tasks.
+
+
+
+
+
+
